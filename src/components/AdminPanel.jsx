@@ -30,6 +30,7 @@ const AdminPanel = ({ statePanel, setPanel, setAdmin, admin }) => {
           ...doc.data(),
           id: doc.id,
         }));
+        console.log(guestList);
 
         const total = guestList?.reduce(
           function (acc, arr) {
@@ -58,11 +59,10 @@ const AdminPanel = ({ statePanel, setPanel, setAdmin, admin }) => {
         // console.log(err);
       }
     };
-
+    fetchGuestList();
     return () => {
       setLoad(true);
       setError(false);
-      fetchGuestList();
     };
   }, []);
 
