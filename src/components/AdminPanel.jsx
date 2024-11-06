@@ -68,11 +68,11 @@ const AdminPanel = ({ statePanel, setPanel, setAdmin, admin }) => {
             Admin Panel
           </p>
           <div className="relative right-0 flex size-full items-center py-5">
-            <p className="w-full border-b-[1px] border-r-[1px] border-t-[1px] border-solid border-black bg-slate-500 py-2 text-white">
+            <p className="w-full border-b-[1px] border-l-[1px] border-t-[1px] border-solid border-black bg-slate-500 py-2 text-white">
               <p>Total guest:</p>
               <p>{totalGuests?.guest}</p>
             </p>
-            <p className="w-full border-b-[1px] border-t-[1px] border-solid border-black bg-slate-500 py-2 text-white">
+            <p className="w-full border-[1px] border-solid border-black bg-slate-500 py-2 text-white">
               <p>Total companions:</p>
               <p>{totalGuests?.companions}</p>
             </p>
@@ -100,7 +100,7 @@ const AdminPanel = ({ statePanel, setPanel, setAdmin, admin }) => {
         </div>
       </div>
       {!load ? (
-        <Table className="w-full bg-slate-50">
+        <Table className="mb-2 w-full bg-slate-50">
           {/* <TableHeader>
             <TableRow>
               <TableHead className="text-center text-black">
@@ -137,9 +137,10 @@ const AdminPanel = ({ statePanel, setPanel, setAdmin, admin }) => {
                     className={`w-[25%] place-items-center border-[1px] ${details.companion ? "bg-green-300" : "bg-red-300"} border-solid border-black p-0`}
                   >
                     <TableCell className="flex w-full p-0">
-                      <TableCell
-                        className={` ${details.numberOfAttendees > 7 ? "h-[240px]" : details.numberOfAttendees === 1 || details.numberOfAttendees === 0 ? "h-fit" : "h-[140px]"} basis-1/2 place-content-center border-r-[1px] border-solid border-black`}
-                      >
+                      <TableCell className="h-fit basis-1/2 place-content-center border-r-[1px] border-solid border-black">
+                        {/* <TableCell
+                        className={` ${details.numberOfAttendees > 7 ? "h-[240px]" : details.numberOfAttendees === 1 || details.numberOfAttendees === 0 ? "h-[60px]" : "h-[140px]"} basis-1/2 place-content-center border-r-[1px] border-solid border-black`}
+                      > */}
                         {details.companion ? "Yes" : "No"}
                       </TableCell>
                       <TableCell className="w-full basis-1/2 place-content-center">
@@ -150,7 +151,9 @@ const AdminPanel = ({ statePanel, setPanel, setAdmin, admin }) => {
                   <TableCell className="w-[25%] border-b-[1px] border-r-[1px] border-solid border-black">
                     {details.companion
                       ? details.nameOfCompanions?.map((name, index) => (
-                          <p key={index}>{name}</p>
+                          <p className="my-2 leading-3" key={index}>
+                            {name}
+                          </p>
                         ))
                       : " - "}
                   </TableCell>
