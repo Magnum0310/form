@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 
-const Auth = ({ statePanel, setPanel, adminPanel, stateForm, form }) => {
+const Auth = ({ statePanel, setLogin, adminPanel, stateForm, form }) => {
   const [userDetails, setUserDetails] = useState({
     email: "",
     password: "",
@@ -21,7 +21,7 @@ const Auth = ({ statePanel, setPanel, adminPanel, stateForm, form }) => {
       );
       setError("");
       adminPanel(true);
-      setPanel(false);
+      setLogin(false);
       console.log(result);
     } catch (error) {
       setError(error.code);
@@ -30,10 +30,10 @@ const Auth = ({ statePanel, setPanel, adminPanel, stateForm, form }) => {
   };
 
   return (
-    <div className="flex size-full flex-col gap-5 bg-slate-500">
+    <div className="flex h-full w-full flex-col items-center justify-center gap-10 rounded-2xl bg-slate-500 md:w-3/4 xl:w-1/2">
       <p>Admin Panel Login</p>
       <form
-        className="flex flex-col gap-5"
+        className="flex w-3/4 flex-col gap-5"
         onSubmit={(e) => e.preventDefault()}
       >
         <Input
@@ -63,16 +63,21 @@ const Auth = ({ statePanel, setPanel, adminPanel, stateForm, form }) => {
           }
         />
         {error && <p className="text-red-500">{error}</p>}
-        <Button onClick={() => handleLogin()}>Login</Button>
-
         <Button
+          className="rounded-xl border-2 border-solid text-white hover:border-black hover:bg-white hover:text-black"
+          onClick={() => handleLogin()}
+        >
+          Login
+        </Button>
+
+        {/* <Button
           onClick={() => {
             stateForm(!form);
-            setPanel(!statePanel);
+            setLogin(!statePanel);
           }}
         >
           Form Panel
-        </Button>
+        </Button> */}
       </form>
     </div>
   );
